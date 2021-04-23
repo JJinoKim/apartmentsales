@@ -14,3 +14,5 @@ npm install --save-dev @bam.tech/react-native-make
 npm install --save react-native-splash-screen
 react-native set-splash --path ./src/Assets/Images/apart-splash.png --resize cover
 
+xml to json
+npm install react-native-xml2js
