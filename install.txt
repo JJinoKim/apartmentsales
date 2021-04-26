@@ -16,3 +16,6 @@ react-native set-splash --path ./src/Assets/Images/apart-splash.png --resize cov
 
 xml to json
 npm install react-native-xml2js
+
+
+npm install react-native-md-textinput

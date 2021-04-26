@@ -6,19 +6,28 @@ import SplashScreen from 'react-native-splash-screen';
 import SearchBox from '~/Components/Searchbox';
 
 const Container = Styled.SafeAreaView`
+  background-color : #ffffff;
+  flex-direction : column;
+  justify-content: space-between;
   flex : 1;
 `;
 
-const SearchContainer = Styled.View`
-  flex : 1;
+const SearchContainer = Styled.KeyboardAvoidingView`  
+  background-color : #ff010111;
+  justify-content: space-around;
+  height : 80;
 `;
-const FilterContainer = Styled.View`
-  flex : 1;
+const FilterContainer = Styled.KeyboardAvoidingView`
+  height : 50;
+  justify-content: space-around;
+  background-color : #0026ff;
 `;
 
 const BodyContainer = Styled.View`
   flex : 10;
+  background-color : #15ff00;
 `;
+
 
 
 
@@ -31,7 +40,9 @@ const App = () => {
   return (
     <Container>
       <SearchContainer>
-        <SearchBox />
+        <SearchBox
+          label='라벨'
+        />
       </SearchContainer>
       <FilterContainer>
         <Text>여기는 필터 </Text>
