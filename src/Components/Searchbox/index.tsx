@@ -1,19 +1,18 @@
-import React,{useState, useEffect,useRef} from 'react';
-import Styled from 'styled-components/native';
-import {View,StatusBar,TextInput,Text, StyleSheet, SafeAreaView , Animated,Platform, UIManager} from 'react-native';
-
+import React,{useState,useRef} from 'react';
+import {TextInput, StyleSheet, SafeAreaView , Animated,Platform, UIManager, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 interface Props{
     label : string,
+    onSearchTxt : (txt: string) => void,
+    focusCheck : boolean,
 }
 
-const index = ({label} : Props) => {
+const Searchbox = ({label,onSearchTxt,focusCheck} : Props) => {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const labelAni = useRef(new Animated.Value(0));    
-
    
-    const labelStyle= {
-        
+    const labelStyle= {        
         top :  labelAni.current.interpolate({
             inputRange : [0, 0.5, 1],
             outputRange : [18,9,0],
@@ -30,19 +29,27 @@ const index = ({label} : Props) => {
 
     const Styles = StyleSheet.create({
         constianer : {
-            paddingTop : 18
+            paddingTop : 18,            
+            flexDirection : "row",
+            alignItems : "center",
+            justifyContent : "center"
         },
         label : {
             position : 'absolute',
-            left : 0 ,        
+            left : 30,
         },
         input : {
             height : 45,
+            width : 300,
             fontSize : 20,
-            color : '#000',
-            borderBottomWidth : 1,
-            borderBottomColor: '#555',            
+            color : '#000000',
+            borderBottomWidth : isFocused ? 3 : 2,
+            borderBottomColor: isFocused ? '#1a5be7' : '#92afec',            
+        },
+        searchIcon : {
+            marginLeft : 10,
         }
+
     });
 
     if (
@@ -52,27 +59,16 @@ const index = ({label} : Props) => {
         UIManager.setLayoutAnimationEnabledExperimental(true);
       }
         
-
-
     const onFocus = () => {
-        isFocused ? setIsFocused(false) : setIsFocused(true);
-        Animated.timing(labelAni.current, {
-            toValue : isFocused ? 0 : 1,
-            duration : 300,
-            useNativeDriver : false,
-        }).start(()=>{
-        });        
+        if(!focusCheck){
+            isFocused ? setIsFocused(false) : setIsFocused(true);
+            Animated.timing(labelAni.current, {
+                toValue : isFocused ? 0 : 1,
+                duration : 300,
+                useNativeDriver : false,
+            }).start();    
+        }            
     };
-    
-    const onBlur = () => {
-        
-    }
-
-
-    useEffect(() => {
-      
-    })
-
 
     return (
         <SafeAreaView style={Styles.constianer}>            
@@ -84,14 +80,19 @@ const index = ({label} : Props) => {
             >
                 {label}
             </Animated.Text>
+
             <TextInput 
                 style={Styles.input}
                 onFocus={onFocus}
-                onBlur={onFocus}
+                onBlur={onFocus}                
+                onChangeText={onSearchTxt}
                 blurOnSubmit
             />
+            <TouchableOpacity style={Styles.searchIcon}>
+                <Icon name="search1" size={30} color="#000000"  />
+            </TouchableOpacity>
         </SafeAreaView>
     );
 };
 
-export default index;
+export default Searchbox;

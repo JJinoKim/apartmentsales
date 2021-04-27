@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import {} from 'react-native';
 import Styled from 'styled-components/native';
 import SplashScreen from 'react-native-splash-screen';
@@ -13,9 +13,9 @@ const Container = Styled.SafeAreaView`
 `;
 
 const SearchContainer = Styled.KeyboardAvoidingView`  
-  background-color : #ff010111;
+  background-color : #ffffff;
   justify-content: space-around;
-  height : 80;
+  height : 100;
 `;
 const FilterContainer = Styled.KeyboardAvoidingView`
   height : 50;
@@ -28,20 +28,31 @@ const BodyContainer = Styled.View`
   background-color : #15ff00;
 `;
 
-
-
-
 const Text = Styled.Text``;
 
+
+
+
 const App = () => {
-  useEffect(() => {
-    SplashScreen.hide();
-  })
+  const [searchText , setSearchText] = useState<string>('');
+  const [focusCheck, setFocusCheck] = useState<boolean>(false);
+
+  useEffect(() => {    
+    SplashScreen.hide();   
+    if(searchText != '') {
+      setFocusCheck(true);
+    }else{
+      setFocusCheck(false);
+    }    
+  });
+
   return (
     <Container>
       <SearchContainer>
         <SearchBox
-          label='라벨'
+          label='Search Apartment'
+          onSearchTxt={setSearchText}
+          focusCheck = {focusCheck}
         />
       </SearchContainer>
       <FilterContainer>

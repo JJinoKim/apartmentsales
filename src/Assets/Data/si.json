@@ -1,0 +1,70 @@
+[
+  {
+    "si_code": "11",
+    "si_name": "서울특별시"
+  },
+  {
+    "si_code": "21",
+    "si_name": "부산광역시"
+  },
+  {
+    "si_code": "22",
+    "si_name": "대구광역시"
+  },
+  {
+    "si_code": "23",
+    "si_name": "인천광역시"
+  },
+  {
+    "si_code": "24",
+    "si_name": "광주광역시"
+  },
+  {
+    "si_code": "25",
+    "si_name": "대전광역시"
+  },
+  {
+    "si_code": "26",
+    "si_name": "울산광역시"
+  },
+  {
+    "si_code": "29",
+    "si_name": "세종특별자치시"
+  },
+  {
+    "si_code": "31",
+    "si_name": "경기도"
+  },
+  {
+    "si_code": "32",
+    "si_name": "강원도"
+  },
+  {
+    "si_code": "33",
+    "si_name": "충청북도"
+  },
+  {
+    "si_code": "34",
+    "si_name": "충청남도"
+  },
+  {
+    "si_code": "35",
+    "si_name": "전라북도"
+  },
+  {
+    "si_code": "36",
+    "si_name": "전라남도"
+  },
+  {
+    "si_code": "37",
+    "si_name": "경상북도"
+  },
+  {
+    "si_code": "38",
+    "si_name": "경상남도"
+  },
+  {
+    "si_code": "39",
+    "si_name": "제주특별자치도"
+  }
+]
