@@ -1,0 +1,1002 @@
+[
+  {
+    "sido_code": "11010",
+    "sido_name": "종로구"
+  },
+  {
+    "sido_code": "11020",
+    "sido_name": "중구"
+  },
+  {
+    "sido_code": "11030",
+    "sido_name": "용산구"
+  },
+  {
+    "sido_code": "11040",
+    "sido_name": "성동구"
+  },
+  {
+    "sido_code": "11050",
+    "sido_name": "광진구"
+  },
+  {
+    "sido_code": "11060",
+    "sido_name": "동대문구"
+  },
+  {
+    "sido_code": "11070",
+    "sido_name": "중랑구"
+  },
+  {
+    "sido_code": "11080",
+    "sido_name": "성북구"
+  },
+  {
+    "sido_code": "11090",
+    "sido_name": "강북구"
+  },
+  {
+    "sido_code": "11100",
+    "sido_name": "도봉구"
+  },
+  {
+    "sido_code": "11110",
+    "sido_name": "노원구"
+  },
+  {
+    "sido_code": "11120",
+    "sido_name": "은평구"
+  },
+  {
+    "sido_code": "11130",
+    "sido_name": "서대문구"
+  },
+  {
+    "sido_code": "11140",
+    "sido_name": "마포구"
+  },
+  {
+    "sido_code": "11150",
+    "sido_name": "양천구"
+  },
+  {
+    "sido_code": "11160",
+    "sido_name": "강서구"
+  },
+  {
+    "sido_code": "11170",
+    "sido_name": "구로구"
+  },
+  {
+    "sido_code": "11180",
+    "sido_name": "금천구"
+  },
+  {
+    "sido_code": "11190",
+    "sido_name": "영등포구"
+  },
+  {
+    "sido_code": "11200",
+    "sido_name": "동작구"
+  },
+  {
+    "sido_code": "11210",
+    "sido_name": "관악구"
+  },
+  {
+    "sido_code": "11220",
+    "sido_name": "서초구"
+  },
+  {
+    "sido_code": "11230",
+    "sido_name": "강남구"
+  },
+  {
+    "sido_code": "11240",
+    "sido_name": "송파구"
+  },
+  {
+    "sido_code": "11250",
+    "sido_name": "강동구"
+  },
+  {
+    "sido_code": "21010",
+    "sido_name": "중구"
+  },
+  {
+    "sido_code": "21020",
+    "sido_name": "서구"
+  },
+  {
+    "sido_code": "21030",
+    "sido_name": "동구"
+  },
+  {
+    "sido_code": "21040",
+    "sido_name": "영도구"
+  },
+  {
+    "sido_code": "21050",
+    "sido_name": "부산진구"
+  },
+  {
+    "sido_code": "21060",
+    "sido_name": "동래구"
+  },
+  {
+    "sido_code": "21070",
+    "sido_name": "남구"
+  },
+  {
+    "sido_code": "21080",
+    "sido_name": "북구"
+  },
+  {
+    "sido_code": "21090",
+    "sido_name": "해운대구"
+  },
+  {
+    "sido_code": "21100",
+    "sido_name": "사하구"
+  },
+  {
+    "sido_code": "21110",
+    "sido_name": "금정구"
+  },
+  {
+    "sido_code": "21120",
+    "sido_name": "강서구"
+  },
+  {
+    "sido_code": "21130",
+    "sido_name": "연제구"
+  },
+  {
+    "sido_code": "21140",
+    "sido_name": "수영구"
+  },
+  {
+    "sido_code": "21150",
+    "sido_name": "사상구"
+  },
+  {
+    "sido_code": "21310",
+    "sido_name": "기장군"
+  },
+  {
+    "sido_code": "22010",
+    "sido_name": "중구"
+  },
+  {
+    "sido_code": "22020",
+    "sido_name": "동구"
+  },
+  {
+    "sido_code": "22030",
+    "sido_name": "서구"
+  },
+  {
+    "sido_code": "22040",
+    "sido_name": "남구"
+  },
+  {
+    "sido_code": "22050",
+    "sido_name": "북구"
+  },
+  {
+    "sido_code": "22060",
+    "sido_name": "수성구"
+  },
+  {
+    "sido_code": "22070",
+    "sido_name": "달서구"
+  },
+  {
+    "sido_code": "22310",
+    "sido_name": "달성군"
+  },
+  {
+    "sido_code": "23010",
+    "sido_name": "중구"
+  },
+  {
+    "sido_code": "23020",
+    "sido_name": "동구"
+  },
+  {
+    "sido_code": "23040",
+    "sido_name": "연수구"
+  },
+  {
+    "sido_code": "23050",
+    "sido_name": "남동구"
+  },
+  {
+    "sido_code": "23060",
+    "sido_name": "부평구"
+  },
+  {
+    "sido_code": "23070",
+    "sido_name": "계양구"
+  },
+  {
+    "sido_code": "23080",
+    "sido_name": "서구"
+  },
+  {
+    "sido_code": "23090",
+    "sido_name": "미추홀구"
+  },
+  {
+    "sido_code": "23310",
+    "sido_name": "강화군"
+  },
+  {
+    "sido_code": "23320",
+    "sido_name": "옹진군"
+  },
+  {
+    "sido_code": "24010",
+    "sido_name": "동구"
+  },
+  {
+    "sido_code": "24020",
+    "sido_name": "서구"
+  },
+  {
+    "sido_code": "24030",
+    "sido_name": "남구"
+  },
+  {
+    "sido_code": "24040",
+    "sido_name": "북구"
+  },
+  {
+    "sido_code": "24050",
+    "sido_name": "광산구"
+  },
+  {
+    "sido_code": "25010",
+    "sido_name": "동구"
+  },
+  {
+    "sido_code": "25020",
+    "sido_name": "중구"
+  },
+  {
+    "sido_code": "25030",
+    "sido_name": "서구"
+  },
+  {
+    "sido_code": "25040",
+    "sido_name": "유성구"
+  },
+  {
+    "sido_code": "25050",
+    "sido_name": "대덕구"
+  },
+  {
+    "sido_code": "26010",
+    "sido_name": "중구"
+  },
+  {
+    "sido_code": "26020",
+    "sido_name": "남구"
+  },
+  {
+    "sido_code": "26030",
+    "sido_name": "동구"
+  },
+  {
+    "sido_code": "26040",
+    "sido_name": "북구"
+  },
+  {
+    "sido_code": "26310",
+    "sido_name": "울주군"
+  },
+  {
+    "sido_code": "29010",
+    "sido_name": "세종시"
+  },
+  {
+    "sido_code": "31011",
+    "sido_name": "수원시 장안구"
+  },
+  {
+    "sido_code": "31012",
+    "sido_name": "수원시 권선구"
+  },
+  {
+    "sido_code": "31013",
+    "sido_name": "수원시 팔달구"
+  },
+  {
+    "sido_code": "31014",
+    "sido_name": "수원시 영통구"
+  },
+  {
+    "sido_code": "31021",
+    "sido_name": "성남시 수정구"
+  },
+  {
+    "sido_code": "31022",
+    "sido_name": "성남시 중원구"
+  },
+  {
+    "sido_code": "31023",
+    "sido_name": "성남시 분당구"
+  },
+  {
+    "sido_code": "31030",
+    "sido_name": "의정부시"
+  },
+  {
+    "sido_code": "31041",
+    "sido_name": "안양시 만안구"
+  },
+  {
+    "sido_code": "31042",
+    "sido_name": "안양시 동안구"
+  },
+  {
+    "sido_code": "31050",
+    "sido_name": "부천시"
+  },
+  {
+    "sido_code": "31060",
+    "sido_name": "광명시"
+  },
+  {
+    "sido_code": "31070",
+    "sido_name": "평택시"
+  },
+  {
+    "sido_code": "31080",
+    "sido_name": "동두천시"
+  },
+  {
+    "sido_code": "31091",
+    "sido_name": "안산시 상록구"
+  },
+  {
+    "sido_code": "31092",
+    "sido_name": "안산시 단원구"
+  },
+  {
+    "sido_code": "31101",
+    "sido_name": "고양시 덕양구"
+  },
+  {
+    "sido_code": "31103",
+    "sido_name": "고양시 일산동구"
+  },
+  {
+    "sido_code": "31104",
+    "sido_name": "고양시 일산서구"
+  },
+  {
+    "sido_code": "31110",
+    "sido_name": "과천시"
+  },
+  {
+    "sido_code": "31120",
+    "sido_name": "구리시"
+  },
+  {
+    "sido_code": "31130",
+    "sido_name": "남양주시"
+  },
+  {
+    "sido_code": "31140",
+    "sido_name": "오산시"
+  },
+  {
+    "sido_code": "31150",
+    "sido_name": "시흥시"
+  },
+  {
+    "sido_code": "31160",
+    "sido_name": "군포시"
+  },
+  {
+    "sido_code": "31170",
+    "sido_name": "의왕시"
+  },
+  {
+    "sido_code": "31180",
+    "sido_name": "하남시"
+  },
+  {
+    "sido_code": "31191",
+    "sido_name": "용인시 처인구"
+  },
+  {
+    "sido_code": "31192",
+    "sido_name": "용인시 기흥구"
+  },
+  {
+    "sido_code": "31193",
+    "sido_name": "용인시 수지구"
+  },
+  {
+    "sido_code": "31200",
+    "sido_name": "파주시"
+  },
+  {
+    "sido_code": "31210",
+    "sido_name": "이천시"
+  },
+  {
+    "sido_code": "31220",
+    "sido_name": "안성시"
+  },
+  {
+    "sido_code": "31230",
+    "sido_name": "김포시"
+  },
+  {
+    "sido_code": "31240",
+    "sido_name": "화성시"
+  },
+  {
+    "sido_code": "31250",
+    "sido_name": "광주시"
+  },
+  {
+    "sido_code": "31260",
+    "sido_name": "양주시"
+  },
+  {
+    "sido_code": "31270",
+    "sido_name": "포천시"
+  },
+  {
+    "sido_code": "31280",
+    "sido_name": "여주시"
+  },
+  {
+    "sido_code": "31350",
+    "sido_name": "연천군"
+  },
+  {
+    "sido_code": "31370",
+    "sido_name": "가평군"
+  },
+  {
+    "sido_code": "31380",
+    "sido_name": "양평군"
+  },
+  {
+    "sido_code": "32010",
+    "sido_name": "춘천시"
+  },
+  {
+    "sido_code": "32020",
+    "sido_name": "원주시"
+  },
+  {
+    "sido_code": "32030",
+    "sido_name": "강릉시"
+  },
+  {
+    "sido_code": "32040",
+    "sido_name": "동해시"
+  },
+  {
+    "sido_code": "32050",
+    "sido_name": "태백시"
+  },
+  {
+    "sido_code": "32060",
+    "sido_name": "속초시"
+  },
+  {
+    "sido_code": "32070",
+    "sido_name": "삼척시"
+  },
+  {
+    "sido_code": "32310",
+    "sido_name": "홍천군"
+  },
+  {
+    "sido_code": "32320",
+    "sido_name": "횡성군"
+  },
+  {
+    "sido_code": "32330",
+    "sido_name": "영월군"
+  },
+  {
+    "sido_code": "32340",
+    "sido_name": "평창군"
+  },
+  {
+    "sido_code": "32350",
+    "sido_name": "정선군"
+  },
+  {
+    "sido_code": "32360",
+    "sido_name": "철원군"
+  },
+  {
+    "sido_code": "32370",
+    "sido_name": "화천군"
+  },
+  {
+    "sido_code": "32380",
+    "sido_name": "양구군"
+  },
+  {
+    "sido_code": "32390",
+    "sido_name": "인제군"
+  },
+  {
+    "sido_code": "32400",
+    "sido_name": "고성군"
+  },
+  {
+    "sido_code": "32410",
+    "sido_name": "양양군"
+  },
+  {
+    "sido_code": "33020",
+    "sido_name": "충주시"
+  },
+  {
+    "sido_code": "33030",
+    "sido_name": "제천시"
+  },
+  {
+    "sido_code": "33041",
+    "sido_name": "청주시 상당구"
+  },
+  {
+    "sido_code": "33042",
+    "sido_name": "청주시 서원구"
+  },
+  {
+    "sido_code": "33043",
+    "sido_name": "청주시 흥덕구"
+  },
+  {
+    "sido_code": "33044",
+    "sido_name": "청주시 청원구"
+  },
+  {
+    "sido_code": "33320",
+    "sido_name": "보은군"
+  },
+  {
+    "sido_code": "33330",
+    "sido_name": "옥천군"
+  },
+  {
+    "sido_code": "33340",
+    "sido_name": "영동군"
+  },
+  {
+    "sido_code": "33350",
+    "sido_name": "진천군"
+  },
+  {
+    "sido_code": "33360",
+    "sido_name": "괴산군"
+  },
+  {
+    "sido_code": "33370",
+    "sido_name": "음성군"
+  },
+  {
+    "sido_code": "33380",
+    "sido_name": "단양군"
+  },
+  {
+    "sido_code": "33390",
+    "sido_name": "증평군"
+  },
+  {
+    "sido_code": "34011",
+    "sido_name": "천안시 동남구"
+  },
+  {
+    "sido_code": "34012",
+    "sido_name": "천안시 서북구"
+  },
+  {
+    "sido_code": "34020",
+    "sido_name": "공주시"
+  },
+  {
+    "sido_code": "34030",
+    "sido_name": "보령시"
+  },
+  {
+    "sido_code": "34040",
+    "sido_name": "아산시"
+  },
+  {
+    "sido_code": "34050",
+    "sido_name": "서산시"
+  },
+  {
+    "sido_code": "34060",
+    "sido_name": "논산시"
+  },
+  {
+    "sido_code": "34070",
+    "sido_name": "계룡시"
+  },
+  {
+    "sido_code": "34080",
+    "sido_name": "당진시"
+  },
+  {
+    "sido_code": "34310",
+    "sido_name": "금산군"
+  },
+  {
+    "sido_code": "34330",
+    "sido_name": "부여군"
+  },
+  {
+    "sido_code": "34340",
+    "sido_name": "서천군"
+  },
+  {
+    "sido_code": "34350",
+    "sido_name": "청양군"
+  },
+  {
+    "sido_code": "34360",
+    "sido_name": "홍성군"
+  },
+  {
+    "sido_code": "34370",
+    "sido_name": "예산군"
+  },
+  {
+    "sido_code": "34380",
+    "sido_name": "태안군"
+  },
+  {
+    "sido_code": "35011",
+    "sido_name": "전주시 완산구"
+  },
+  {
+    "sido_code": "35012",
+    "sido_name": "전주시 덕진구"
+  },
+  {
+    "sido_code": "35020",
+    "sido_name": "군산시"
+  },
+  {
+    "sido_code": "35030",
+    "sido_name": "익산시"
+  },
+  {
+    "sido_code": "35040",
+    "sido_name": "정읍시"
+  },
+  {
+    "sido_code": "35050",
+    "sido_name": "남원시"
+  },
+  {
+    "sido_code": "35060",
+    "sido_name": "김제시"
+  },
+  {
+    "sido_code": "35310",
+    "sido_name": "완주군"
+  },
+  {
+    "sido_code": "35320",
+    "sido_name": "진안군"
+  },
+  {
+    "sido_code": "35330",
+    "sido_name": "무주군"
+  },
+  {
+    "sido_code": "35340",
+    "sido_name": "장수군"
+  },
+  {
+    "sido_code": "35350",
+    "sido_name": "임실군"
+  },
+  {
+    "sido_code": "35360",
+    "sido_name": "순창군"
+  },
+  {
+    "sido_code": "35370",
+    "sido_name": "고창군"
+  },
+  {
+    "sido_code": "35380",
+    "sido_name": "부안군"
+  },
+  {
+    "sido_code": "36010",
+    "sido_name": "목포시"
+  },
+  {
+    "sido_code": "36020",
+    "sido_name": "여수시"
+  },
+  {
+    "sido_code": "36030",
+    "sido_name": "순천시"
+  },
+  {
+    "sido_code": "36040",
+    "sido_name": "나주시"
+  },
+  {
+    "sido_code": "36060",
+    "sido_name": "광양시"
+  },
+  {
+    "sido_code": "36310",
+    "sido_name": "담양군"
+  },
+  {
+    "sido_code": "36320",
+    "sido_name": "곡성군"
+  },
+  {
+    "sido_code": "36330",
+    "sido_name": "구례군"
+  },
+  {
+    "sido_code": "36350",
+    "sido_name": "고흥군"
+  },
+  {
+    "sido_code": "36360",
+    "sido_name": "보성군"
+  },
+  {
+    "sido_code": "36370",
+    "sido_name": "화순군"
+  },
+  {
+    "sido_code": "36380",
+    "sido_name": "장흥군"
+  },
+  {
+    "sido_code": "36390",
+    "sido_name": "강진군"
+  },
+  {
+    "sido_code": "36400",
+    "sido_name": "해남군"
+  },
+  {
+    "sido_code": "36410",
+    "sido_name": "영암군"
+  },
+  {
+    "sido_code": "36420",
+    "sido_name": "무안군"
+  },
+  {
+    "sido_code": "36430",
+    "sido_name": "함평군"
+  },
+  {
+    "sido_code": "36440",
+    "sido_name": "영광군"
+  },
+  {
+    "sido_code": "36450",
+    "sido_name": "장성군"
+  },
+  {
+    "sido_code": "36460",
+    "sido_name": "완도군"
+  },
+  {
+    "sido_code": "36470",
+    "sido_name": "진도군"
+  },
+  {
+    "sido_code": "36480",
+    "sido_name": "신안군"
+  },
+  {
+    "sido_code": "37011",
+    "sido_name": "포항시 남구"
+  },
+  {
+    "sido_code": "37012",
+    "sido_name": "포항시 북구"
+  },
+  {
+    "sido_code": "37020",
+    "sido_name": "경주시"
+  },
+  {
+    "sido_code": "37030",
+    "sido_name": "김천시"
+  },
+  {
+    "sido_code": "37040",
+    "sido_name": "안동시"
+  },
+  {
+    "sido_code": "37050",
+    "sido_name": "구미시"
+  },
+  {
+    "sido_code": "37060",
+    "sido_name": "영주시"
+  },
+  {
+    "sido_code": "37070",
+    "sido_name": "영천시"
+  },
+  {
+    "sido_code": "37080",
+    "sido_name": "상주시"
+  },
+  {
+    "sido_code": "37090",
+    "sido_name": "문경시"
+  },
+  {
+    "sido_code": "37100",
+    "sido_name": "경산시"
+  },
+  {
+    "sido_code": "37310",
+    "sido_name": "군위군"
+  },
+  {
+    "sido_code": "37320",
+    "sido_name": "의성군"
+  },
+  {
+    "sido_code": "37330",
+    "sido_name": "청송군"
+  },
+  {
+    "sido_code": "37340",
+    "sido_name": "영양군"
+  },
+  {
+    "sido_code": "37350",
+    "sido_name": "영덕군"
+  },
+  {
+    "sido_code": "37360",
+    "sido_name": "청도군"
+  },
+  {
+    "sido_code": "37370",
+    "sido_name": "고령군"
+  },
+  {
+    "sido_code": "37380",
+    "sido_name": "성주군"
+  },
+  {
+    "sido_code": "37390",
+    "sido_name": "칠곡군"
+  },
+  {
+    "sido_code": "37400",
+    "sido_name": "예천군"
+  },
+  {
+    "sido_code": "37410",
+    "sido_name": "봉화군"
+  },
+  {
+    "sido_code": "37420",
+    "sido_name": "울진군"
+  },
+  {
+    "sido_code": "37430",
+    "sido_name": "울릉군"
+  },
+  {
+    "sido_code": "38030",
+    "sido_name": "진주시"
+  },
+  {
+    "sido_code": "38050",
+    "sido_name": "통영시"
+  },
+  {
+    "sido_code": "38060",
+    "sido_name": "사천시"
+  },
+  {
+    "sido_code": "38070",
+    "sido_name": "김해시"
+  },
+  {
+    "sido_code": "38080",
+    "sido_name": "밀양시"
+  },
+  {
+    "sido_code": "38090",
+    "sido_name": "거제시"
+  },
+  {
+    "sido_code": "38100",
+    "sido_name": "양산시"
+  },
+  {
+    "sido_code": "38111",
+    "sido_name": "창원시 의창구"
+  },
+  {
+    "sido_code": "38112",
+    "sido_name": "창원시 성산구"
+  },
+  {
+    "sido_code": "38113",
+    "sido_name": "창원시 마산합포구"
+  },
+  {
+    "sido_code": "38114",
+    "sido_name": "창원시 마산회원구"
+  },
+  {
+    "sido_code": "38115",
+    "sido_name": "창원시 진해구"
+  },
+  {
+    "sido_code": "38310",
+    "sido_name": "의령군"
+  },
+  {
+    "sido_code": "38320",
+    "sido_name": "함안군"
+  },
+  {
+    "sido_code": "38330",
+    "sido_name": "창녕군"
+  },
+  {
+    "sido_code": "38340",
+    "sido_name": "고성군"
+  },
+  {
+    "sido_code": "38350",
+    "sido_name": "남해군"
+  },
+  {
+    "sido_code": "38360",
+    "sido_name": "하동군"
+  },
+  {
+    "sido_code": "38370",
+    "sido_name": "산청군"
+  },
+  {
+    "sido_code": "38380",
+    "sido_name": "함양군"
+  },
+  {
+    "sido_code": "38390",
+    "sido_name": "거창군"
+  },
+  {
+    "sido_code": "38400",
+    "sido_name": "합천군"
+  },
+  {
+    "sido_code": "39010",
+    "sido_name": "제주시"
+  },
+  {
+    "sido_code": "39020",
+    "sido_name": "서귀포시"
+  }
+]

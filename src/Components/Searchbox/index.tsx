@@ -1,6 +1,5 @@
 import React,{useState,useRef} from 'react';
-import {TextInput, StyleSheet, SafeAreaView , Animated,Platform, UIManager, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import {TextInput, StyleSheet, SafeAreaView , Animated,Platform, UIManager, TouchableOpacity, Image} from 'react-native';
 
 interface Props{
     label : string,
@@ -47,6 +46,7 @@ const Searchbox = ({label,onSearchTxt,focusCheck} : Props) => {
             borderBottomColor: isFocused ? '#1a5be7' : '#92afec',            
         },
         searchIcon : {
+            marginTop : 15,
             marginLeft : 10,
         }
 
@@ -89,7 +89,7 @@ const Searchbox = ({label,onSearchTxt,focusCheck} : Props) => {
                 blurOnSubmit
             />
             <TouchableOpacity style={Styles.searchIcon}>
-                <Icon name="search1" size={30} color="#000000"  />
+                <Image source={require('~/Assets/Images/Icons/icon_search.png')} style={{width : 25,}} />                
             </TouchableOpacity>
         </SafeAreaView>
     );

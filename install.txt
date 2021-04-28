@@ -19,3 +19,7 @@ npm install react-native-xml2js
 
 
 npm install react-native-md-textinput
+
+npm install @react-native-picker/picker --save
+npm install @react-native-community/datetimepicker --save
+npm install react-moment

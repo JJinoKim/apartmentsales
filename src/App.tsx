@@ -1,10 +1,14 @@
 import React from 'react';
 import Navigator from '~/Screen/Navigatior';
 
+import {ApiContextProvider } from '~/Context/ApiData';
+
 
 const App = () => {
   return (
-    <Navigator />
+    <ApiContextProvider>
+      <Navigator />
+    </ApiContextProvider>
   );
 };
 
