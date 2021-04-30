@@ -23,3 +23,5 @@ npm install react-native-md-textinput
 npm install @react-native-picker/picker --save
 npm install @react-native-community/datetimepicker --save
 npm install react-moment
+npm install react-native-animated-loader --save (안됨)
+yarn add react-native-animated-loader

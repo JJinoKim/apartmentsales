@@ -9,9 +9,10 @@ import SearchBox from '~/Components/Searchbox';
 import PickerComponent from '~/Components/Picker';
 import Datepicker from '~/Components/Datepicker';
 import ImgButton from '~/Components/ImgButton';
+import CardView from '~/Components/CardView';
 
 import {ApiContext} from '~/Context/ApiData';
-
+import { FlatList } from 'react-native-gesture-handler';
 
 
 const Container = Styled.SafeAreaView`
@@ -37,26 +38,31 @@ const FilterContainer = Styled.KeyboardAvoidingView`
 
 const BodyContainer = Styled.View`
   flex : 10;
-  background-color : #15ff00;
+  background-color : #ffffff;
 `;
 
 const Text = Styled.Text``;
 const imageSearchButton = '~/Assets/Images/Icons/icon_sch_button.png';
 
 const App = () => {
-  const {siList,selSidoList, getSido, getApiData} = useContext<IApiData>(ApiContext);
+  const {siList,selSidoList, getSido, getApiData, ApartList} = useContext<IApiData>(ApiContext);
 
   const [sidoCode, setSidoCode] = useState<string>('');
 
   // search
   const [searchText , setSearchText] = useState<string>('');
   const [focusCheck, setFocusCheck] = useState<boolean>(false);
-  const [searchShow, setSearchShow] = useState<boolean>(false);
 
   // Datepicker
   const [selDate , setSelDate] = useState<string>('');
   const [dateShow, setDateShow] = useState<boolean>(false);
   const [searchDate , setSearchDate] = useState<string>('');
+
+  // Data Paging
+  const [dataStart, setDataStart] = useState<number>(0);
+  const [dataEnd, setDataEnd] = useState<number>(50);
+  const [dataList, setDataList] = useState<Array<IApartmentData>>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {  
     SplashScreen.hide();   
@@ -70,8 +76,8 @@ const App = () => {
       if(i === 0){
         setSidoCode(e.sido_code);
       }
-    });
-    
+    });    
+    console.log("실행실행")
   },[]);
 
   // ========== picker start ================
@@ -105,10 +111,17 @@ const App = () => {
 
   // ========== SearchButton start ================
   const onSearch = () => {
-    console.log(sidoCode);
+    setDataStart(0);
+    setDataEnd(50);
     getApiData(sidoCode,searchDate);
-    setSearchShow(true);
+    if(ApartList) setDataList(ApartList.slice(dataStart,dataEnd));
+    
   }
+
+  const onRefresh = () => {
+    console.log("리프레쉬")
+  }
+  
 
   return (
     <Container>
@@ -134,18 +147,50 @@ const App = () => {
           siList={picker_si}          
         />
       </FilterContainer> 
-      {searchShow &&
-        <SearchContainer>
-          <SearchBox
-            label='Search Apartment'
-            onSearchTxt={setSearchText}
-            focusCheck = {focusCheck}
-          />
-        </SearchContainer>
-      }     
+      <SearchContainer>
+        <SearchBox
+          label='Search Apartment'
+          onSearchTxt={setSearchText}
+          focusCheck = {focusCheck}
+        />
+      </SearchContainer>   
       
       <BodyContainer>
-        <Text>여기는 결과 목록 나오는곳</Text>
+        {ApartList && 
+        <FlatList 
+          onRefresh={onRefresh}
+          keyExtractor={(item, index) => {
+            return `aprtment-${index}`;
+          }}
+          onEndReachedThreshold={0.5}
+          showsVerticalScrollIndicator={true}
+          onEndReached={()=>{
+            console.log("reloading")
+            setDataStart(dataStart + 50);
+            setDataEnd(dataEnd + 50);
+            setDataList([...dataList, ...ApartList.slice(dataStart,dataEnd)]);
+          }}
+          
+          pagingEnabled={false}
+          data={dataList}          
+          renderItem={({item, index}) => (            
+            <CardView 
+              apartName = {item.아파트}
+              area = {item.전용면적}
+              buildDate ={item.건축년도}
+              dong={item.법정동}
+              floor={item.층}
+              jibun={item.지번}
+              price={item.거래금액}
+              tradeDay={item.일}
+              tradeMonth={item.월}
+              tradeYear={item.년}
+              key={index}
+            />
+         )}        
+        />
+        }
+        
       </BodyContainer>
     </Container>
   );

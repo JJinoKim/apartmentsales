@@ -29,6 +29,7 @@ const MyTheme = {
     },
   };
 
+  // bottom 은 필요 없을 듯...
 const MainNavigatorTab = () => {
     return (
         <BottomTab.Navigator
@@ -45,7 +46,7 @@ const Navigator = () => {
     const scheme = useColorScheme();
     return (
         <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
-            <MainNavigatorTab />
+            <MainScreenTab />
         </NavigationContainer>
     );
 }
