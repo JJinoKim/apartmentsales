@@ -11,10 +11,12 @@ const defaultContext : IApiData = {
     getSi : () => {},
     getSido : (si_code : string) => {},
     getApiData : async (lawd_cd : string, deal_ymd : string) => {},
+    reloadData : async (start :number , end : number) => {},
     siList : undefined,
     sidoList : undefined,
     selSidoList : undefined,
     ApartList : undefined,
+    DataList : undefined,
 }
 
 const ServiceKey = 'ftuC8hlsPStymsmzxO8tavBIgc3en%2FvZpvfB3e6M9M0Z9fIYXmWHzWfVhNnDCsq0ia%2BqvIHY%2FYClFwh8mbXvqg%3D%3D';
@@ -33,9 +35,7 @@ const ApiContextProvider = ({children} : Props) => {
     const [selSidoList, setSelSidoList] = useState<Array<ISidoCode>>([]);
     const [ApartList, setApartList] = useState<Array<IApartmentData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [dataStart, setDataStart] = useState<number>(0);
-    const [dataEnd, setDataEnd] = useState<number>(50);
-    const [dataList, setDataList] = useState<Array<IApartmentData>>([]);
+    const [DataList, setDataList] = useState<Array<IApartmentData>>([]);
 
 
     const getSido = (si_code : string) => {  
@@ -51,13 +51,16 @@ const ApiContextProvider = ({children} : Props) => {
     // api에서 최초 데이터 가져오기
     const getApiData = async (lawd_cd : string, deal_ymd : string) => {  
         setIsLoading(true);
-        setDataStart(0);
-        setDataEnd(50);
         const apiUrl = `${http}?serviceKey=${ServiceKey}&LAWD_CD=${lawd_cd}&DEAL_YMD=${deal_ymd}`;
         await axios.get(apiUrl).then((res) => {
-            setApartList(res.data['response']["body"]["items"]["item"]);            
+            setApartList(res.data['response']["body"]["items"]["item"]);      
+            setDataList((res.data['response']["body"]["items"]["item"]).slice(1,50));
             setIsLoading(false);
         })        
+    }
+
+    const reloadData = (start : number , end : number) => {
+        setDataList([...DataList , ...ApartList.slice(start,end)]);
     }
 
  
@@ -67,7 +70,6 @@ const ApiContextProvider = ({children} : Props) => {
 
     useEffect(() => {
         console.log('context useEffect');
-        if(ApartList) setDataList(ApartList.slice(dataStart,dataEnd));
         getSi();                
     },[ApartList])
 
@@ -80,7 +82,9 @@ const ApiContextProvider = ({children} : Props) => {
             sidoList,
             selSidoList,
             getApiData,
-            ApartList
+            ApartList,
+            DataList,
+            reloadData
         }}
        >
            {children}    

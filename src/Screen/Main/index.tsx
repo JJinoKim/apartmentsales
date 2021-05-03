@@ -1,5 +1,5 @@
-import React,{useEffect,useState, useContext} from 'react';
-import {} from 'react-native';
+import React,{useEffect,useState, useContext,useRef} from 'react';
+import { View , Animated} from 'react-native';
 import Styled from 'styled-components/native';
 import SplashScreen from 'react-native-splash-screen';
 import {Picker} from '@react-native-picker/picker';
@@ -10,6 +10,7 @@ import PickerComponent from '~/Components/Picker';
 import Datepicker from '~/Components/Datepicker';
 import ImgButton from '~/Components/ImgButton';
 import CardView from '~/Components/CardView';
+import RotateUpdown from '~/Components/Animation/RotateUpdown';
 
 import {ApiContext} from '~/Context/ApiData';
 import { FlatList } from 'react-native-gesture-handler';
@@ -23,8 +24,10 @@ const Container = Styled.SafeAreaView`
 `;
 
 const SearchContainer = Styled.KeyboardAvoidingView`  
+  flex : 1;
   background-color : #ffffff;
-  justify-content: space-around;
+  flex-direction : row;
+  align-Items : center;
   height : 80;
 `;
 const FilterContainer = Styled.KeyboardAvoidingView`
@@ -45,7 +48,7 @@ const Text = Styled.Text``;
 const imageSearchButton = '~/Assets/Images/Icons/icon_sch_button.png';
 
 const App = () => {
-  const {siList,selSidoList, getSido, getApiData, ApartList} = useContext<IApiData>(ApiContext);
+  const {siList,selSidoList, getSido, getApiData, ApartList, DataList,reloadData} = useContext<IApiData>(ApiContext);
 
   const [sidoCode, setSidoCode] = useState<string>('');
 
@@ -54,17 +57,18 @@ const App = () => {
   const [focusCheck, setFocusCheck] = useState<boolean>(false);
 
   // Datepicker
-  const [selDate , setSelDate] = useState<string>('');
-  const [dateShow, setDateShow] = useState<boolean>(false);
-  const [searchDate , setSearchDate] = useState<string>('');
+  const [selYear , setSelYear] = useState<string>(new Date().getFullYear().toString());
+  const [selMonth , setSelMonth] = useState<string>('01');
+  const [searchDate , setSearchDate] = useState<string>('');  
+  const [isThisYear, setIsThisYear] = useState<boolean>(true);
 
   // Data Paging
   const [dataStart, setDataStart] = useState<number>(0);
   const [dataEnd, setDataEnd] = useState<number>(50);
-  const [dataList, setDataList] = useState<Array<IApartmentData>>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  useEffect(() => {  
+  useEffect(() => {    
+        
     SplashScreen.hide();   
     if(searchText != '') {
       setFocusCheck(true);
@@ -76,8 +80,8 @@ const App = () => {
       if(i === 0){
         setSidoCode(e.sido_code);
       }
-    });    
-    console.log("실행실행")
+    });   
+  
   },[]);
 
   // ========== picker start ================
@@ -97,29 +101,54 @@ const App = () => {
     setSidoCode(val);
   }
   
-  const onSelectDate = (event : Event, selectedDate : Date | undefined) => {
-    setDateShow(false);
-    setSelDate(moment(selectedDate).format('YYYY-MM-DD'));
-    setSearchDate(moment(selectedDate).format('YYYYMM'));
-  }
 
   // ========== datepicker start ================
-  const datepickerShow = () => {
-    dateShow ? setDateShow(false) : setDateShow(true);
+  const onSelectYear = (val:string, idx:number) => {
+    setSelYear(val);
+    setSearchDate(selYear+selMonth);
+    if(val === new Date().getFullYear().toString()) {
+      setIsThisYear(true);
+    }else{
+      setIsThisYear(false);
+    }
+  }
+
+  const onSelectMonth = (val:string, idx:number) => {
+    setSelMonth(val);
+    setSearchDate(selYear+selMonth);
   }
 
 
   // ========== SearchButton start ================
+
+  const arrowAni = useRef(new Animated.Value(0));    
+  const [rotateState,setRotateState] = useState(false);
+
+  const rotate = arrowAni.current.interpolate({
+      inputRange: [0,0.5, 1],
+      outputRange: ['0deg', '-90deg','-180deg'],
+  }); 
+
+  const onArrowClick = () => {
+    Animated.timing(arrowAni.current, {
+        toValue : rotateState ? 0 : 1,
+        duration : 300,
+        useNativeDriver : false,
+    }).start(()=>{
+        rotateState ? setRotateState(false) : setRotateState(true);
+    });    
+}
+
+
   const onSearch = () => {
     setDataStart(0);
     setDataEnd(50);
     getApiData(sidoCode,searchDate);
-    if(ApartList) setDataList(ApartList.slice(dataStart,dataEnd));
-    
+    //if(ApartList) setDataList(ApartList.slice(dataStart,dataEnd));    
   }
 
   const onRefresh = () => {
-    console.log("리프레쉬")
+    console.log("리프레쉬")    
   }
   
 
@@ -127,17 +156,12 @@ const App = () => {
     <Container>
       <FilterContainer>
         <Datepicker 
-          date={new Date()}
-          mode='date'
-          onSelectDate={onSelectDate}
-          selDate={selDate}
-          show={dateShow}
-          datepickerShow={datepickerShow}
+          isThisYear={isThisYear}
+          yearRange={10}
+          onSelectYear={onSelectYear}
+          onSelectMonth= {onSelectMonth}
         />
-        <ImgButton 
-          imageName='search'
-          onSearch={onSearch}
-        />
+        
       </FilterContainer>
       <FilterContainer>
         <PickerComponent 
@@ -147,12 +171,27 @@ const App = () => {
           siList={picker_si}          
         />
       </FilterContainer> 
-      <SearchContainer>
-        <SearchBox
-          label='Search Apartment'
-          onSearchTxt={setSearchText}
-          focusCheck = {focusCheck}
-        />
+      <SearchContainer>    
+        <RotateUpdown         
+          image='arrow'          
+          arrowAni={arrowAni}
+          onClick={onArrowClick}
+          rotate={rotate}
+          rotateState={rotateState}
+          
+        />    
+        <ImgButton 
+          imageName='search'
+          onSearch={onSearch}          
+        />        
+        {false && <View>
+          <SearchBox
+            label='Search Apartment'
+            onSearchTxt={setSearchText}
+            focusCheck = {focusCheck}
+          />
+        </View>}
+        
       </SearchContainer>   
       
       <BodyContainer>
@@ -162,17 +201,17 @@ const App = () => {
           keyExtractor={(item, index) => {
             return `aprtment-${index}`;
           }}
-          onEndReachedThreshold={0.5}
+          onEndReachedThreshold={0.6}
           showsVerticalScrollIndicator={true}
           onEndReached={()=>{
             console.log("reloading")
             setDataStart(dataStart + 50);
             setDataEnd(dataEnd + 50);
-            setDataList([...dataList, ...ApartList.slice(dataStart,dataEnd)]);
+            reloadData(dataStart, dataEnd);
           }}
-          
+          bounces={true}
           pagingEnabled={false}
-          data={dataList}          
+          data={DataList}          
           renderItem={({item, index}) => (            
             <CardView 
               apartName = {item.아파트}

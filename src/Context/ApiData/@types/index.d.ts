@@ -12,10 +12,12 @@ interface IApiData  {
     getSi : () => void;
     getSido : (si_code : string) => void;
     getApiData : (lawd_cd : string, deal_ymd : string) => void;
+    reloadData : (start : number, end : number) => void;
     siList : Array<ISiCode> | undefined ;
     sidoList : Array<ISidoCode> | undefined;
     selSidoList : Array<ISidoCode> | undefined;
     ApartList : Array<IApartmentData> | undefined;
+    DataList : Array<IApartmentData> | undefined;
 }
 
 // 한글이라니...

@@ -3,7 +3,8 @@ import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
 
 const Styles = StyleSheet.create({
     container : {
-
+        right : 1,
+        justifyContent : 'flex-end',        
     },
     image : {
         width : 40,
@@ -23,7 +24,7 @@ const ImgButton = ({imageName,onSearch} : Props) => {
     }
 
     return (
-        <View>
+        <View style={Styles.container}>
             <TouchableOpacity onPress={onSearch}>
                 <Image style={Styles.image}
                     source={imageSource[imageName]}
