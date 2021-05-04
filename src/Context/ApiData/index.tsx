@@ -52,14 +52,15 @@ const ApiContextProvider = ({children} : Props) => {
     const getApiData = async (lawd_cd : string, deal_ymd : string) => {  
         setIsLoading(true);
         const apiUrl = `${http}?serviceKey=${ServiceKey}&LAWD_CD=${lawd_cd}&DEAL_YMD=${deal_ymd}`;
-        await axios.get(apiUrl).then((res) => {
+        await axios.get(apiUrl).then((res) => {  
             setApartList(res.data['response']["body"]["items"]["item"]);      
-            setDataList((res.data['response']["body"]["items"]["item"]).slice(1,50));
+            //setDataList((res.data['response']["body"]["items"]["item"]).slice(1,50));
             setIsLoading(false);
-        })        
+        })                
     }
 
     const reloadData = (start : number , end : number) => {
+        console.log(start,end)
         setDataList([...DataList , ...ApartList.slice(start,end)]);
     }
 
@@ -70,6 +71,9 @@ const ApiContextProvider = ({children} : Props) => {
 
     useEffect(() => {
         console.log('context useEffect');
+        
+        setApartList(ApartList.sort((a,b) => a.아파트 > b.아파트 ? 1 : -1));
+        setDataList(ApartList.slice(0,50));
         getSi();                
     },[ApartList])
 

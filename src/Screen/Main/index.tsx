@@ -81,7 +81,6 @@ const App = () => {
         setSidoCode(e.sido_code);
       }
     });   
-  
   },[]);
 
   // ========== picker start ================
@@ -115,7 +114,7 @@ const App = () => {
 
   const onSelectMonth = (val:string, idx:number) => {
     setSelMonth(val);
-    setSearchDate(selYear+selMonth);
+    setSearchDate(selYear+val);
   }
 
 
@@ -140,10 +139,10 @@ const App = () => {
 }
 
 
-  const onSearch = () => {
+  const onSearch = async () => {
     setDataStart(0);
     setDataEnd(50);
-    getApiData(sidoCode,searchDate);
+    await getApiData(sidoCode,searchDate);
     //if(ApartList) setDataList(ApartList.slice(dataStart,dataEnd));    
   }
 
@@ -157,7 +156,7 @@ const App = () => {
       <FilterContainer>
         <Datepicker 
           isThisYear={isThisYear}
-          yearRange={10}
+          yearRange={20}
           onSelectYear={onSelectYear}
           onSelectMonth= {onSelectMonth}
         />
@@ -207,7 +206,8 @@ const App = () => {
             console.log("reloading")
             setDataStart(dataStart + 50);
             setDataEnd(dataEnd + 50);
-            reloadData(dataStart, dataEnd);
+            console.log(dataStart);
+            reloadData(dataStart + 50, dataEnd + 50);
           }}
           bounces={true}
           pagingEnabled={false}
