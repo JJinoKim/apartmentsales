@@ -10,9 +10,10 @@ const Styles = StyleSheet.create({
         alignItems : "center",
         justifyContent : "flex-start",
     },
-    calendar : {
+    icon : {
         marginLeft : 10,
         width : 30,
+        marginRight : 20,
     },
     text : {
         fontSize : 20,
@@ -25,7 +26,8 @@ const Styles = StyleSheet.create({
     pickerMonth : {
         height : 50,
         width : 100, 
-    }
+    },
+
 })
 
 interface Props{
@@ -82,7 +84,7 @@ const Datepicker = ({yearRange,isThisYear,onSelectYear,onSelectMonth} : Props) =
     return (
         <View >
             <TouchableOpacity style={Styles.container}>
-                <Image source={require('~/Assets/Images/Icons/icon_calendar.png')} style={Styles.calendar} />
+                <Image  source={require('~/Assets/Images/Icons/icon_calendar.png')} style={Styles.icon} />
             <Text> 날짜 : </Text>
 
             <Picker style={Styles.picker} onValueChange={onSelectYear}>

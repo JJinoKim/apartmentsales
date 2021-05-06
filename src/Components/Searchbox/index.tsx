@@ -1,5 +1,5 @@
 import React,{useState,useRef} from 'react';
-import {TextInput, StyleSheet, SafeAreaView , Animated,Platform, UIManager, TouchableOpacity, Image} from 'react-native';
+import {TextInput, StyleSheet, SafeAreaView , Animated,Platform, UIManager, TouchableOpacity, Image, Text} from 'react-native';
 
 interface Props{
     label : string,
@@ -28,10 +28,12 @@ const Searchbox = ({label,onSearchTxt,focusCheck} : Props) => {
 
     const Styles = StyleSheet.create({
         constianer : {
-            paddingTop : 18,            
+            //paddingTop : 18,            
             flexDirection : "row",
             alignItems : "center",
-            justifyContent : "center"
+            justifyContent : "flex-start",
+            marginTop : 30,
+            flex : 1,
         },
         label : {
             position : 'absolute',
@@ -39,7 +41,7 @@ const Searchbox = ({label,onSearchTxt,focusCheck} : Props) => {
         },
         input : {
             height : 45,
-            width : 300,
+            width : 250,
             fontSize : 20,
             color : '#000000',
             borderBottomWidth : isFocused ? 3 : 2,
@@ -48,10 +50,16 @@ const Searchbox = ({label,onSearchTxt,focusCheck} : Props) => {
         searchIcon : {
             marginTop : 15,
             marginLeft : 10,
-        }
+        },
+        icon : {
+            marginLeft : 10,
+            width : 30,
+            marginRight : 20,
+            
+        },
 
     });
-
+/**
     if (
         Platform.OS === 'android' &&
         UIManager.setLayoutAnimationEnabledExperimental
@@ -69,9 +77,19 @@ const Searchbox = ({label,onSearchTxt,focusCheck} : Props) => {
             }).start();    
         }            
     };
+ */
 
+    const onFocus = () => {
+        if(!focusCheck){
+            isFocused ? setIsFocused(false) : setIsFocused(true);   
+        }            
+    };
     return (
-        <SafeAreaView style={Styles.constianer}>            
+        <SafeAreaView style={Styles.constianer}>   
+            <Image  source={require('~/Assets/Images/Icons/icon_apart.png')} style={Styles.icon} />
+            <Text> 건물명 : </Text> 
+            {/**
+             * 
             <Animated.Text 
                 style={[
                     Styles.label,
@@ -80,6 +98,8 @@ const Searchbox = ({label,onSearchTxt,focusCheck} : Props) => {
             >
                 {label}
             </Animated.Text>
+             */}        
+            
 
             <TextInput 
                 style={Styles.input}
@@ -88,9 +108,6 @@ const Searchbox = ({label,onSearchTxt,focusCheck} : Props) => {
                 onChangeText={onSearchTxt}
                 blurOnSubmit
             />
-            <TouchableOpacity style={Styles.searchIcon}>
-                <Image source={require('~/Assets/Images/Icons/icon_search.png')} style={{width : 25,}} />                
-            </TouchableOpacity>
         </SafeAreaView>
     );
 };

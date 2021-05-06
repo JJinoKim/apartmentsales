@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Image ,Text } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
 const Styles = StyleSheet.create({
@@ -7,12 +7,21 @@ const Styles = StyleSheet.create({
         flex : 1,
         flexDirection : "row",
         alignItems : "center",
-        justifyContent : "center"
+        justifyContent : "flex-start",
     },
     picker : {
         height : 50,
         width : 200
-    }
+    },
+    text : {
+        fontSize : 20,
+        marginLeft : 10,
+    },
+    icon : {
+        marginLeft : 10,
+        width : 30,
+        marginRight : 20,
+    },
 });
 
 interface Props {
@@ -26,7 +35,9 @@ interface Props {
 const index = ({onChangeSi,onSelectSidoCode,siList,selSidoList} : Props) => {
     
     return (
-        <View style={Styles.constianer}>            
+        <View style={Styles.constianer}> 
+            <Image  source={require('~/Assets/Images/Icons/icon_place.png')} style={Styles.icon} />
+            <Text> 지역 : </Text>           
             <Picker 
                 style={Styles.picker}
                 onValueChange={onChangeSi}

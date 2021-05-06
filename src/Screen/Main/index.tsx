@@ -1,5 +1,5 @@
 import React,{useEffect,useState, useContext,useRef} from 'react';
-import { View , Animated} from 'react-native';
+import { View , Animated, StyleSheet} from 'react-native';
 import Styled from 'styled-components/native';
 import SplashScreen from 'react-native-splash-screen';
 import {Picker} from '@react-native-picker/picker';
@@ -11,9 +11,11 @@ import Datepicker from '~/Components/Datepicker';
 import ImgButton from '~/Components/ImgButton';
 import CardView from '~/Components/CardView';
 import RotateUpdown from '~/Components/Animation/RotateUpdown';
+import Filter from '~/Components/Filter';
 
 import {ApiContext} from '~/Context/ApiData';
 import { FlatList } from 'react-native-gesture-handler';
+import { transform } from '@babel/core';
 
 
 const Container = Styled.SafeAreaView`
@@ -24,12 +26,30 @@ const Container = Styled.SafeAreaView`
 `;
 
 const SearchContainer = Styled.KeyboardAvoidingView`  
-  flex : 1;
   background-color : #ffffff;
   flex-direction : row;
   align-Items : center;
   height : 80;
+  
 `;
+
+const AnimatedContainer = Styled.KeyboardAvoidingView`  
+  background-color : #ffffff;
+  flex-direction : row;  
+  height : 0;
+`;
+
+const Styles = StyleSheet.create({
+  view : {
+    backgroundColor : '#ffffff',
+    flexDirection : 'column',
+    justifyContent : 'space-between',
+    height : 0,
+  }
+})
+
+
+
 const FilterContainer = Styled.KeyboardAvoidingView`
   height : 50;
   margin-top : 10;
@@ -128,6 +148,17 @@ const App = () => {
       outputRange: ['0deg', '-90deg','-180deg'],
   }); 
 
+  const animateVariable = {
+    rotate : arrowAni.current.interpolate({
+      inputRange: [0,0.5, 1],
+      outputRange: ['0deg', '-90deg','-180deg'],
+    }),
+    view : arrowAni.current.interpolate({
+      inputRange: [0,0.5, 1],
+      outputRange: [0, 70,150],
+    })
+  }
+
   const onArrowClick = () => {
     Animated.timing(arrowAni.current, {
         toValue : rotateState ? 0 : 1,
@@ -153,15 +184,16 @@ const App = () => {
 
   return (
     <Container>
+      {/* 날짜 선택 */}
       <FilterContainer>
         <Datepicker 
           isThisYear={isThisYear}
           yearRange={20}
           onSelectYear={onSelectYear}
           onSelectMonth= {onSelectMonth}
-        />
-        
+        />        
       </FilterContainer>
+      {/* 지역 선택 */}
       <FilterContainer>
         <PickerComponent 
           onChangeSi={onChangeSi}
@@ -170,27 +202,35 @@ const App = () => {
           siList={picker_si}          
         />
       </FilterContainer> 
+      {/* 숨겨진 필터 건물명이랑 나머지필터 */}
+      <Animated.View
+          style={[Styles.view, { height: animateVariable.view }]}
+      >   
+          {/* 건물명 검색 */}
+          <SearchBox
+            label='Search Apartment'
+            onSearchTxt={setSearchText}
+            focusCheck = {focusCheck}
+          />          
+          {/* 정렬 */}
+          <Filter 
+          
+          />       
+       </Animated.View>   
       <SearchContainer>    
         <RotateUpdown         
           image='arrow'          
           arrowAni={arrowAni}
           onClick={onArrowClick}
-          rotate={rotate}
+          rotate={animateVariable.rotate}
           rotateState={rotateState}
           
         />    
+        {/* 검색버튼 */}
         <ImgButton 
           imageName='search'
           onSearch={onSearch}          
-        />        
-        {false && <View>
-          <SearchBox
-            label='Search Apartment'
-            onSearchTxt={setSearchText}
-            focusCheck = {focusCheck}
-          />
-        </View>}
-        
+        />                
       </SearchContainer>   
       
       <BodyContainer>
