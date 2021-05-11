@@ -13,6 +13,7 @@ interface IApiData  {
     getSido : (si_code : string) => void;
     getApiData : (lawd_cd : string, deal_ymd : string) => void;
     reloadData : (start : number, end : number) => void;
+    sortApartList : (sortType : string, sort : string) => void;
     siList : Array<ISiCode> | undefined ;
     sidoList : Array<ISidoCode> | undefined;
     selSidoList : Array<ISidoCode> | undefined;

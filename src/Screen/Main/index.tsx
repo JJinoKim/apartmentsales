@@ -169,6 +169,11 @@ const App = () => {
     });    
 }
 
+  // 필터
+  const onFilterChange = (val: string, idx : number) => {
+    console.log(val)
+  }
+
 
   const onSearch = async () => {
     setDataStart(0);
@@ -214,7 +219,7 @@ const App = () => {
           />          
           {/* 정렬 */}
           <Filter 
-          
+            onFilterChange={onFilterChange}
           />       
        </Animated.View>   
       <SearchContainer>    

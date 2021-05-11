@@ -12,6 +12,7 @@ const defaultContext : IApiData = {
     getSido : (si_code : string) => {},
     getApiData : async (lawd_cd : string, deal_ymd : string) => {},
     reloadData : async (start :number , end : number) => {},
+    sortApartList : (sortType : string, sort : string) => {},
     siList : undefined,
     sidoList : undefined,
     selSidoList : undefined,
@@ -60,13 +61,24 @@ const ApiContextProvider = ({children} : Props) => {
     }
 
     const reloadData = (start : number , end : number) => {
-        console.log(start,end)
         setDataList([...DataList , ...ApartList.slice(start,end)]);
     }
 
  
-    const sortApartList = () => {
-        
+    const sortApartList = (sortType : string, sort : string) => {
+        switch(sortType) {
+            case 'name' :
+                ApartList.sort((a,b) => a.아파트 > b.아파트  ? 1: -1 );
+                break;
+            case 'area' :
+                ApartList.sort((a,b) => a.전용면적 > b.전용면적  ? 1: -1 );
+                break;
+            case 'year' :
+                ApartList.sort((a,b) => a.건축년도 > b.건축년도  ? 1: -1 );
+                break;
+            default :
+                break;
+        }        
     }
 
     useEffect(() => {
@@ -88,7 +100,8 @@ const ApiContextProvider = ({children} : Props) => {
             getApiData,
             ApartList,
             DataList,
-            reloadData
+            reloadData,
+            sortApartList
         }}
        >
            {children}    
