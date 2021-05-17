@@ -1,4 +1,4 @@
-import React,{useEffect,useState, useContext,useRef} from 'react';
+import React,{useEffect,useState, useContext,useRef, } from 'react';
 import { View , Animated, StyleSheet} from 'react-native';
 import Styled from 'styled-components/native';
 import SplashScreen from 'react-native-splash-screen';
@@ -68,7 +68,8 @@ const Text = Styled.Text``;
 const imageSearchButton = '~/Assets/Images/Icons/icon_sch_button.png';
 
 const App = () => {
-  const {siList,selSidoList, getSido, getApiData, ApartList, DataList,reloadData} = useContext<IApiData>(ApiContext);
+  const {siList,selSidoList, getSido, getApiData, ApartList, sortApartList} = useContext<IApiData>(ApiContext);
+  const [DataList, setDataList] = useState<Array<IApartmentData> >([]);
 
   const [sidoCode, setSidoCode] = useState<string>('');
 
@@ -82,13 +83,16 @@ const App = () => {
   const [searchDate , setSearchDate] = useState<string>('');  
   const [isThisYear, setIsThisYear] = useState<boolean>(true);
 
-  // Data Paging
-  const [dataStart, setDataStart] = useState<number>(0);
-  const [dataEnd, setDataEnd] = useState<number>(50);
-  const [loading, setLoading] = useState<boolean>(false);
+  // filter 
+  const [selectedId, setSelectedId] = useState(null);
+  const [filterVal, setFilterVal] = useState<string>('');
+  const [asc , setAsc] = useState<number>(1);
+  const [desc , setDesc] = useState<number>(-1);
+
+  
 
   useEffect(() => {    
-        
+    console.log('여기')
     SplashScreen.hide();   
     if(searchText != '') {
       setFocusCheck(true);
@@ -96,12 +100,9 @@ const App = () => {
       setFocusCheck(false);
     }    
 
-    selSidoList?.map((e,i)=>{
-      if(i === 0){
-        setSidoCode(e.sido_code);
-      }
-    });   
-  },[]);
+ 
+    if(ApartList)setDataList(ApartList);
+  },[ApartList]);
 
   // ========== picker start ================
   const onChangeSi = (val: string, idx : number) => {
@@ -160,6 +161,7 @@ const App = () => {
   }
 
   const onArrowClick = () => {
+    console.log(filterVal)
     Animated.timing(arrowAni.current, {
         toValue : rotateState ? 0 : 1,
         duration : 300,
@@ -170,23 +172,37 @@ const App = () => {
 }
 
   // 필터
-  const onFilterChange = (val: string, idx : number) => {
-    console.log(val)
+  const onFilterChange = async (val: string, idx : number) => {
+    setFilterVal(val);
   }
 
+  const onSortChange = async (val: string, idx : number) => {
+    if(val === 'asc'){
+      setAsc(1);
+      setDesc(-1);
+    }else if(val === 'desc'){
+      setAsc(-1);
+      setDesc(1);
+    }
+  }
+  
+  
+  
 
   const onSearch = async () => {
-    setDataStart(0);
-    setDataEnd(50);
-    await getApiData(sidoCode,searchDate);
+    console.log("dd :" + sidoCode)
+    await getApiData(sidoCode,searchDate);    
+    flatListRef.current.scrollToIndex({index: 0, animated: true })
+    //setSelectedId();
     //if(ApartList) setDataList(ApartList.slice(dataStart,dataEnd));    
   }
-
+  
   const onRefresh = () => {
+    
     console.log("리프레쉬")    
   }
   
-
+  const flatListRef = useRef();
   return (
     <Container>
       {/* 날짜 선택 */}
@@ -220,6 +236,7 @@ const App = () => {
           {/* 정렬 */}
           <Filter 
             onFilterChange={onFilterChange}
+            onSortChange = {onSortChange}
           />       
        </Animated.View>   
       <SearchContainer>    
@@ -240,23 +257,36 @@ const App = () => {
       
       <BodyContainer>
         {ApartList && 
-        <FlatList 
+        <FlatList           
           onRefresh={onRefresh}
           keyExtractor={(item, index) => {
             return `aprtment-${index}`;
           }}
           onEndReachedThreshold={0.6}
-          showsVerticalScrollIndicator={true}
+          showsVerticalScrollIndicator={false}
           onEndReached={()=>{
-            console.log("reloading")
-            setDataStart(dataStart + 50);
-            setDataEnd(dataEnd + 50);
-            console.log(dataStart);
-            reloadData(dataStart + 50, dataEnd + 50);
+        
           }}
+          extraData={ApartList[0]}
           bounces={true}
-          pagingEnabled={false}
-          data={DataList}          
+          pagingEnabled={false}          
+          ref={flatListRef}
+          data={ApartList && 
+                ApartList                  
+                  .sort((a,b) => {
+                    if(filterVal === '' || filterVal === 'name') {
+                      return a.아파트 > b.아파트 ? asc: desc;
+                    }else if(filterVal === 'year'){
+                      return a.건축년도 > b.건축년도 ? asc: desc ;
+                    }else if(filterVal === 'area'){
+                      return a.아파트 > b.아파트 ? asc: desc && a.전용면적 > b.전용면적 ? asc: desc;
+                    }else if(filterVal === 'money'){
+                      return a.아파트 > b.아파트 ? asc: desc && a.거래금액 > b.거래금액 ? asc: desc;
+                    }else{
+                      return -1;
+                    }                               
+                  })
+                  .filter(r =>searchText != '' ? r.아파트.indexOf(searchText) !== -1 : r.아파트 !== searchText)}          
           renderItem={({item, index}) => (            
             <CardView 
               apartName = {item.아파트}
@@ -271,7 +301,8 @@ const App = () => {
               tradeYear={item.년}
               key={index}
             />
-         )}        
+         )}  
+                  
         />
         }
         

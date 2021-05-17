@@ -11,13 +11,12 @@ const defaultContext : IApiData = {
     getSi : () => {},
     getSido : (si_code : string) => {},
     getApiData : async (lawd_cd : string, deal_ymd : string) => {},
-    reloadData : async (start :number , end : number) => {},
+    searchName : async (apartName :string ) => {},
     sortApartList : (sortType : string, sort : string) => {},
     siList : undefined,
     sidoList : undefined,
     selSidoList : undefined,
     ApartList : undefined,
-    DataList : undefined,
 }
 
 const ServiceKey = 'ftuC8hlsPStymsmzxO8tavBIgc3en%2FvZpvfB3e6M9M0Z9fIYXmWHzWfVhNnDCsq0ia%2BqvIHY%2FYClFwh8mbXvqg%3D%3D';
@@ -36,7 +35,6 @@ const ApiContextProvider = ({children} : Props) => {
     const [selSidoList, setSelSidoList] = useState<Array<ISidoCode>>([]);
     const [ApartList, setApartList] = useState<Array<IApartmentData>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [DataList, setDataList] = useState<Array<IApartmentData>>([]);
 
 
     const getSido = (si_code : string) => {  
@@ -51,41 +49,46 @@ const ApiContextProvider = ({children} : Props) => {
 
     // api에서 최초 데이터 가져오기
     const getApiData = async (lawd_cd : string, deal_ymd : string) => {  
+        console.log(lawd_cd)
         setIsLoading(true);
         const apiUrl = `${http}?serviceKey=${ServiceKey}&LAWD_CD=${lawd_cd}&DEAL_YMD=${deal_ymd}`;
         await axios.get(apiUrl).then((res) => {  
-            setApartList(res.data['response']["body"]["items"]["item"]);      
-            //setDataList((res.data['response']["body"]["items"]["item"]).slice(1,50));
+            //setApartList(res.data['response']["body"]["items"]["item"]);      
             setIsLoading(false);
+            return res.data['response']["body"]["items"]["item"];
+            //setDataList((res.data['response']["body"]["items"]["item"]).slice(1,50));            
+            }        
+        ).then((value) => {            
+            setApartList(value);
         })                
     }
 
-    const reloadData = (start : number , end : number) => {
-        setDataList([...DataList , ...ApartList.slice(start,end)]);
+    const searchName = (apartName :string) => {
+        
     }
 
  
     const sortApartList = (sortType : string, sort : string) => {
         switch(sortType) {
-            case 'name' :
-                ApartList.sort((a,b) => a.아파트 > b.아파트  ? 1: -1 );
+            case 'name' :                
+                setApartList(ApartList.sort((a,b) => a.아파트 > b.아파트  ? 1: -1 ));
                 break;
-            case 'area' :
-                ApartList.sort((a,b) => a.전용면적 > b.전용면적  ? 1: -1 );
+            case 'area' :                
+                setApartList(ApartList.sort((a,b) => a.전용면적 > b.전용면적  ? 1: -1 ));               
                 break;
             case 'year' :
-                ApartList.sort((a,b) => a.건축년도 > b.건축년도  ? 1: -1 );
+                setApartList(ApartList.sort((a,b) => a.건축년도 > b.건축년도  ? 1: -1 ));                
                 break;
             default :
+                setApartList(ApartList.sort((a,b) => a.아파트 > b.아파트  ? 1: -1 ));
                 break;
         }        
     }
 
     useEffect(() => {
         console.log('context useEffect');
-        
         setApartList(ApartList.sort((a,b) => a.아파트 > b.아파트 ? 1 : -1));
-        setDataList(ApartList.slice(0,50));
+        //setDataList(ApartList.slice(0,50));
         getSi();                
     },[ApartList])
 
@@ -99,8 +102,7 @@ const ApiContextProvider = ({children} : Props) => {
             selSidoList,
             getApiData,
             ApartList,
-            DataList,
-            reloadData,
+            searchName,
             sortApartList
         }}
        >
